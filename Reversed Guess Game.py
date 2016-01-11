@@ -5,8 +5,8 @@
 print("Take a number between 1 and 100 in your mind.")
 print("Answer the questions with 'higher', 'lower' or 'yes'")
 
+current = [1,100]
 number = 50
-incr = 50
 
 n = input("Is your number %s? " % number)
 while True:
@@ -14,10 +14,12 @@ while True:
         print("Yay!")
         break
     elif n.lower().startswith('h'):
-        incr =  int((incr/2))
-        number += incr
+        current[current.index(min(current))] = number
+        number = int((max(current) - min(current))/2 + min(current))
+        print (current)
         n = input("Is your number %s? " % number)
     elif n.lower().startswith('l'):
-        incr =  int((incr/2))
-        number -= incr
+        current[current.index(max(current))] = number
+        print (current)
+        number = int((max(current) - min(current))/2 + min(current))
         n = input("Is your number %s? " % number)
