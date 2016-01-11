@@ -1,0 +1,26 @@
+#number_guess_cpu
+#by chra94
+
+#This program will find the number you have in your mind.
+
+
+
+import random
+print('Think of a number between 1 and 100. I will find it')
+guess = random.randint(1, 100)
+guess_high = 100    #This makes it remember its highest guess
+guess_low = 1       #This makes it remember its lowest guess
+while True:
+    print("I will guess your number. My guess is " + str(guess) + '. Is this your number? Enter lower, higher or yes.')
+    Input = input()
+    if Input == 'lower':
+        print('Ach nein! Too high. I must try again.')
+        guess_high = guess - 1 # -1 decreasess its max guess value by one
+        guess = random.randint(guess_low, guess_high)    #this prevents a guess higher than a failed guess 
+    elif Input == 'higher':
+        print('Damn, too low. I try again.')
+        guess_low = guess + 1  # +1 increases its min guess value by one 
+        guess = random.randint(guess_low, guess_high)  #this prevents a guess lower than a failed guess
+    elif Input == 'yes':
+        break
+print('Aha! I succeded. Your challenge is no match for me!')
