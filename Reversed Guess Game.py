@@ -17,16 +17,28 @@ while True:
     elif n.lower().startswith('h'): # The answer is something like higher.
         current[current.index(min(current))] = number
         # Take the index of the minimum value of the current list and change it to the "magic number"
-        number = int((max(current) - min(current))/2 + min(current))
+        average = (max(current) - min(current))/2
+        if average == 1: # if the average is equal to 1 then the number must be the average of the string
+            answer = min(current) + 1
+            print("Your number is %s!" % answer)
+            break
+        else:
+            number = int(average + min(current))
+            n = input("Is your number %s? " % number)
         # Set the 'magic value' to the average of the min and max values of current
 
-        n = input("Is your number %s? " % number) #Next question
+ #Next question
 
     elif n.lower().startswith('l'): # The answer is something like lower.
         current[current.index(max(current))] = number
         # Take the index of the maximum value of the 'current' list and change it to the "magic number"
+        average = (max(current) - min(current))/2
+        if average == 1: # if the average is equal to 1 then the number must be the average of the string
+            answer = min(current) + 1
+            print("Your number is %s!" % answer)
+            break
+        else:
+            number = int(average + min(current))
+            # Set the 'magic value' to the average of the min and max values of current
+            n = input("Is your number %s? " % number) #Next question
 
-        number = int((max(current) - min(current))/2 + min(current))
-        # Set the 'magic value' to the average of the min and max values of current
-
-        n = input("Is your number %s? " % number) #Next question
