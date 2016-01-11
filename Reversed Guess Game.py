@@ -37,6 +37,10 @@ while True:
             answer = min(current) + 1
             print("Your number is %s!" % answer)
             break
+        elif current[0] == 1 and current[1]==2:
+            print("Your number is 1!")
+            break
+
         else:
             number = int(average + min(current))
             # Set the 'magic value' to the average of the min and max values of current
