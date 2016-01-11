@@ -10,16 +10,23 @@ number = 50
 
 n = input("Is your number %s? " % number)
 while True:
-    if n.lower().startswith('y'):
+    if n.lower().startswith('y'): # The answer is something like yes.
         print("Yay!")
         break
-    elif n.lower().startswith('h'):
+
+    elif n.lower().startswith('h'): # The answer is something like higher.
         current[current.index(min(current))] = number
+        # Take the index of the minimum value of the current list and change it to the "magic number"
         number = int((max(current) - min(current))/2 + min(current))
-        print (current)
-        n = input("Is your number %s? " % number)
-    elif n.lower().startswith('l'):
+        # Set the 'magic value' to the average of the min and max values of current
+
+        n = input("Is your number %s? " % number) #Next question
+
+    elif n.lower().startswith('l'): # The answer is something like lower.
         current[current.index(max(current))] = number
-        print (current)
+        # Take the index of the maximum value of the 'current' list and change it to the "magic number"
+
         number = int((max(current) - min(current))/2 + min(current))
-        n = input("Is your number %s? " % number)
+        # Set the 'magic value' to the average of the min and max values of current
+
+        n = input("Is your number %s? " % number) #Next question
