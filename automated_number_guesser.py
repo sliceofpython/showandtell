@@ -3,8 +3,6 @@
 
 #This program will find the number you select.
 
-
-
 import random
 print('Enter an integer, any integer. I will find it.')
 n = int(input())
