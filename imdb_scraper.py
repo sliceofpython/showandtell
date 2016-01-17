@@ -12,6 +12,6 @@ soup = bs4.BeautifulSoup(res.text,"html.parser")
 for x in range(1,250):
     name = soup.select('.lister-list > tr:nth-of-type(' + str(x) + ') > td:nth-of-type(2) > a:nth-of-type(1)')
     rating = soup.select('.lister-list > tr:nth-of-type(' + str(x) +') > td:nth-of-type(3) > strong:nth-of-type(1)')
-    movie_rating[name[0].text] = rating[0].text
+    movie_rating[name[0].text] = float(rating[0].text)
 
 print (movie_rating)
