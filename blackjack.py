@@ -7,16 +7,22 @@ import random
 
 def standard():
     global cardList, playerCards, houseCards, decisions
-    cardList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    cardList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4
     playerCards = []
     houseCards = []
     decision = ''
 
 def dealCards():
     for i in range(2):
-        playerCards.append(cardList[random.randint(0, 12)])
+        r = random.randint(0, (len(cardList)))
+        playerCards.append(cardList[r])
+        del cardList[r]
+        print(len(cardList))
     for i in range(2):
-        houseCards.append(cardList[random.randint(0, 12)])
+        r = random.randint(0, (len(cardList)))
+        houseCards.append(cardList[r])
+        del cardList[r]
+        print(len(cardList))
 
 def playerTurn():
     while sum(playerCards) < 21:
