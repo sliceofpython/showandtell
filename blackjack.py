@@ -8,7 +8,7 @@ import random, sys
 
 def standard():
     global cardList, playerCards, houseCards, decisions, blackjack
-    cardList = [11, 10] * 4
+    cardList = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4
     playerCards = []
     houseCards = []
     decision = ''
