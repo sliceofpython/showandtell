@@ -5,6 +5,9 @@ chra94
 
 import random
 
+chips = 20
+bet = 0
+
 def standard():
     global cardList, playerCards, houseCards, decisions
     cardList = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4
@@ -13,6 +16,10 @@ def standard():
     playerCards = []
     houseCards = []
     decision = ''
+    print('You have ' + str(chips) + ' chips.')
+    global bet
+    bet = int(input('How much do you bet?\n'))
+
 
 def dealCards():
     for i in range(2):
@@ -61,14 +68,26 @@ def houseTurn():
 def findWinner():
     if sum(playerCards) > 21:
         print('The house always wins!')
+        global chips
+        chips -= bet
+        print('You lost ' + str(bet) + ' chips.')
     elif sum(houseCards) > 21:
         print('The house busted, you win')
+        global chips
+        chips += bet
+        print('You won ' + str(bet) + ' chips.')
     elif sum(playerCards) == sum(houseCards):
         print("It's a draw")
     elif sum(playerCards) < sum(houseCards):
         print('The house always wins!')
+        global chips
+        chips -= bet
+        print('You lost ' + str(bet) + ' chips.')
     else:
         print('You win')
+        global chips
+        chips += bet
+        print('You won ' + str(bet) + ' chips.')
 
 def printCards():
     print('Player cards: ' + str(playerCards), '\nHouse cards : ' + str(houseCards))
