@@ -16,6 +16,10 @@ def standard():
     print('You have ' + str(chips) + ' chips.')
     global bet
     bet = int(input('How much do you bet?\n'))
+    if bet < 0:
+        bet = 1
+    elif bet > chips:
+        bet = chips
 
 
 def dealCards():
@@ -69,7 +73,7 @@ def findWinner():
         chips -= bet
         print('You lost ' + str(bet) + ' chips.')
     elif sum(houseCards) > 21:
-        print('The house busted, you win')s
+        print('The house busted, you win')
         chips += bet
         print('You won ' + str(bet) + ' chips.')
     elif sum(playerCards) == sum(houseCards):
