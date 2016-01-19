@@ -5,14 +5,18 @@ chra94
 
 import random
 
+
 def standard():
     global cardList, playerCards, houseCards, decisions
     cardList = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4
-    #cardList = [11, 2, 3, 4, 5, 6,] * 4
 
     playerCards = []
     houseCards = []
     decision = ''
+    print('You have ' + str(chips) + ' chips.')
+    global bet
+    bet = int(input('How much do you bet?\n'))
+
 
 def dealCards():
     for i in range(2):
@@ -59,16 +63,25 @@ def houseTurn():
             break
 
 def findWinner():
+    global chips
     if sum(playerCards) > 21:
         print('The house always wins!')
+        chips -= bet
+        print('You lost ' + str(bet) + ' chips.')
     elif sum(houseCards) > 21:
-        print('The house busted, you win')
+        print('The house busted, you win')s
+        chips += bet
+        print('You won ' + str(bet) + ' chips.')
     elif sum(playerCards) == sum(houseCards):
         print("It's a draw")
     elif sum(playerCards) < sum(houseCards):
         print('The house always wins!')
+        chips -= bet
+        print('You lost ' + str(bet) + ' chips.')
     else:
         print('You win')
+        chips += bet
+        print('You won ' + str(bet) + ' chips.')
 
 def printCards():
     print('Player cards: ' + str(playerCards), '\nHouse cards : ' + str(houseCards))
@@ -92,5 +105,6 @@ def main():
     findWinner()
     playAgain()
 
-
+chips = 20
+bet = 0
 main()
