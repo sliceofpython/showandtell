@@ -28,14 +28,16 @@ def playerTurn():
         if decision == 'stand':
             break
         elif decision == 'hit':
-            playerCards.append(cardList[random.randint(0, 12)])
+            r = random.randint(0, (len(cardList)))
+            playerCards.append(cardList[r])
             print('Your cards are : ' + str(playerCards) + '.')
             print('The sum of your cards is :' + str(sum(playerCards)))
 
 def houseTurn():
     if sum(houseCards) < 17:
         while sum(houseCards) < 17:
-            houseCards.append(cardList[random.randint(0, 12)])
+            r = random.randint(0, (len(cardList)))
+            houseCards.append(cardList[r])
 
 def findWinner():
     if sum(playerCards) > 21:
