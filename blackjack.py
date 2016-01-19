@@ -1,6 +1,6 @@
 '''
 Blackjack
-chra94
+Chra94
 '''
 
 import random, sys
