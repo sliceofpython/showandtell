@@ -1,5 +1,5 @@
 # Reversed Guess Game
-# By VR29
+# By VR29.
 # Idea on http://www.practicepython.org/exercise/2015/11/01/25-guessing-game-two.html
 
 print("Take a number between 1 and 100 in your mind.")
