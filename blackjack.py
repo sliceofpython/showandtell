@@ -3,18 +3,22 @@ Blackjack
 chra94
 '''
 
-import random
+import random, sys
 
 
 def standard():
-    global cardList, playerCards, houseCards, decisions
-    cardList = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] * 4
-
+    global cardList, playerCards, houseCards, decisions, blackjack
+    cardList = [11, 10] * 4
     playerCards = []
     houseCards = []
     decision = ''
+    blackjack = False
+    print(blackjack)
     print('You have ' + str(chips) + ' chips.')
     global bet
+    if chips == 0:
+        print('To bad. You lose.')
+        sys.exit()
     bet = int(input('How much do you bet?\n'))
     if bet < 0:
         bet = 1
@@ -23,6 +27,7 @@ def standard():
 
 
 def dealCards():
+    global blackjack
     for i in range(2):
         r = random.randint(0, (len(cardList) - 1))
         playerCards.append(cardList[r])
@@ -31,6 +36,8 @@ def dealCards():
         r = random.randint(0, (len(cardList) - 1))
         houseCards.append(cardList[r])
         del cardList[r]
+    if sum(playerCards) == 21:
+        blackjack = True
 
 def playerTurn():
     while True:
@@ -68,7 +75,13 @@ def houseTurn():
 
 def findWinner():
     global chips
-    if sum(playerCards) > 21:
+    if sum(playerCards) == sum(houseCards):
+        print("It's a draw")
+    elif blackjack:
+        print('Blackjack!')
+        print('You won ' + str(round(bet*3/2)) + ' chips.')
+        chips += round(bet*3/2)
+    elif sum(playerCards) > 21:
         print('The house always wins!')
         chips -= bet
         print('You lost ' + str(bet) + ' chips.')
@@ -76,8 +89,6 @@ def findWinner():
         print('The house busted, you win')
         chips += bet
         print('You won ' + str(bet) + ' chips.')
-    elif sum(playerCards) == sum(houseCards):
-        print("It's a draw")
     elif sum(playerCards) < sum(houseCards):
         print('The house always wins!')
         chips -= bet
@@ -86,6 +97,10 @@ def findWinner():
         print('You win')
         chips += bet
         print('You won ' + str(bet) + ' chips.')
+
+    if chips == 0:
+        print('No chips? You lose.')
+        sys.exit()
 
 def printCards():
     print('Player cards: ' + str(playerCards), '\nHouse cards : ' + str(houseCards))
