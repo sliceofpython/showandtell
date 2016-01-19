@@ -17,12 +17,10 @@ def dealCards():
         r = random.randint(0, (len(cardList)))
         playerCards.append(cardList[r])
         del cardList[r]
-        print(len(cardList))
     for i in range(2):
         r = random.randint(0, (len(cardList)))
         houseCards.append(cardList[r])
         del cardList[r]
-        print(len(cardList))
 
 def playerTurn():
     while sum(playerCards) < 21:
