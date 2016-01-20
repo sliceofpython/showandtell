@@ -22,7 +22,7 @@ def standard():
     while True:
         try:
             bet = int(input('How much do you bet?\n'))
-            if bet < 0:
+            if bet < 1:
                 raise AssertionError
             elif bet > chips:
                 raise NameError
@@ -44,8 +44,11 @@ def dealCards():
         r = random.randint(0, (len(cardList) - 1))
         houseCards.append(cardList[r])
         del cardList[r]
+    playerCards.sort()
+    print('House cards : [' + str(houseCards[1]) + ']')
     if sum(playerCards) == 21:
         blackjack = True
+
 
 def playerTurn():
     while True:
@@ -131,7 +134,7 @@ def playAgain():
         try:
             decide = input('Do you want to play again? yes/no\n')
             if decide == 'no':
-                print("I'll wait paitiently for your return.")
+                print("You'll be back.")
                 sys.exit()
             elif decide == 'yes':
                 main()
@@ -144,13 +147,11 @@ def playAgain():
 def main():
     standard()
     dealCards()
-    playerCards.sort()
-    print('House cards : [' + str(houseCards[1]) + ']')
     playerTurn()
     houseTurn()
     printCards()
     findWinner()
     playAgain()
 
-print('Welcome to The House. We\'ll have... fun.')
+print('Welcome to The House.')
 main()
