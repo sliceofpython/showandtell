@@ -1,0 +1,63 @@
+'''
+SimpleKey 1
+Chra94 -|-
+
+The program can create and validate keys. Original code. Proof of concept.
+'''
+#TODO: Cleanup.
+
+from random import *
+key = ''
+letter = 'abcdefghijklmnopqrstuvwxyz'
+
+
+
+def generate():
+    global key
+    for i in range(11):
+        r = randint(1, 9)
+        key += str(r)
+        key += letter[r*2]
+    print(key)
+    
+
+def validate():
+    global letter
+    status = True
+    r = ''
+    key = input('Input key')
+    n = len(key)
+    for i in key:
+        if n % 2 == 1:
+            print('if')
+            print (r)
+            
+            if i != letter[int(r)*2]:
+                print('fail')
+                status = False
+                break
+            else:
+                print('nice')
+            print(i)
+            r = str(i)
+        else:
+            print('else')
+            int(i)
+            r = i
+            print (str(i))
+            
+            
+            print('nice')
+        n -= 1
+    if not status:
+        print('fail')
+    else:
+        print('Success')
+
+
+print('SimpleKey...')
+decide = input('Generate/Validate?')
+if decide == 'Generate':
+    generate()
+elif decide == 'Validate':
+    validate()
