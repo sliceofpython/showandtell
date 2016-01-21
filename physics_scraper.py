@@ -1,6 +1,9 @@
 """
 www.phys.org scraper
 by VR29
+
+TODO:
+- support references
 """
 
 import requests
@@ -8,7 +11,7 @@ import bs4
 
 base_url = 'http://phys.org/physics-news/'
 r = requests.get(base_url)
-soup = bs4.BeautifulSoup(r.text, 'lxml')
+soup = bs4.BeautifulSoup(r.text, 'html.parser')
 
 artikelen = {}
 
@@ -36,7 +39,8 @@ def article():
     for x in range(0, 10):
         get(titles[x].get('href'))
 
-file_text = open('test.txt','w')
+file_text = open('physics.txt','w')
 article()
+print("Output to " + file_text.name + " finished!")
 file_text.close()
 
