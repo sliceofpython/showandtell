@@ -1,10 +1,9 @@
 '''
-SimpleKey 1
+SimpleKey 
 Chra94 -|-
 
-The program can create and validate keys. Original code. Proof of concept.
+I've been told that regular expressions can be simpler to use. This is a beginner's take on keygens.
 '''
-#TODO: Cleanup.
 
 from random import *
 key = ''
@@ -28,26 +27,17 @@ def validate():
     key = input('Input key')
     n = len(key)
     for i in key:
-        if n % 2 == 1:
-            print('if')
-            print (r)
-            
+        if n % 2 == 1:          
             if i != letter[int(r)*2]:
-                print('fail')
                 status = False
                 break
             else:
-                print('nice')
-            print(i)
+                pass
             r = str(i)
         else:
-            print('else')
             int(i)
             r = i
-            print (str(i))
             
-            
-            print('nice')
         n -= 1
     if not status:
         print('fail')
