@@ -2,7 +2,7 @@
 PyPig
 Chra94
 
-Proof of concept
+Two player, proof of concept
 '''
 
 
